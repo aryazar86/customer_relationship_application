@@ -17,15 +17,15 @@ class CRM
     
     case user_selected
     when 1
-      add_new_contact
+      Rolodex.add_new_contact
     when 2
-      modify_existing_contact
+      Rolodex.modify_existing_contact
     when 3
-      delete_contact
+      Rolodex.delete_contact
     when 4
-      display_all
+      Rolodex.display_all
     when 5
-      display_attr
+      Rolodex.display_attr
     end
  
   end
@@ -44,28 +44,11 @@ class CRM
     end
   end
 
-
-  def add_new_contact
-    print "Enter First Name: "
-    first_name = gets.chomp
-    print "Enter Last Name: "
-    last_name = gets.chomp
-    print "Enter Email Address: "
-    email = gets.chomp
-    print "Enter a Note: "
-    note = gets.chomp
-    contact = Contact.new(first_name, last_name, email, note)
-    Rolodex.add_contact(contact)
-  end
-  
-  def modify_existing_contact
-    Rolodex.contacts
-  end
-
 end
 
 crm_action = "start"
 the_CRM = CRM.new
+
 while crm_action != "end" do 
   crm_action = the_CRM.main_menu
   puts "Not a valid selection, try again." if crm_action == "error"
